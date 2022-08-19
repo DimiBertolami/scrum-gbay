@@ -1,5 +1,6 @@
 import './App.css';
 import React from "react";
+import FormInput from "./components/FormInput";
 
 function App() {
     const [data, setData] = React.useState(null);
@@ -13,8 +14,15 @@ function App() {
     }, []);
     return (
     <div className="app">
-        <p>{!data ? "Loading..." : data[0].FirstName}</p>
-      <h1>Hello world!</h1>
+        {/*<p>{!data ? "Loading..." : data[0].FirstName}</p>*/}
+
+        <form>
+            <FormInput placeholder="First Name"/>
+            <FormInput placeholder="Second Name"/>
+            <FormInput placeholder="Email"/>
+            <FormInput placeholder="Street"/>
+        </form>
+
     </div>
   );
 }
