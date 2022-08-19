@@ -5,7 +5,7 @@ envdata.config({
 });
 // console.log(envdata);
 // console.log(process.env)
-console.log(process.env.DATABASE)
+console.log(process.env.DB_DATABASE)
 class Database{
     constructor(){
         this.con = mysql.createConnection({
