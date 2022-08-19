@@ -6,13 +6,29 @@ const app = express();
 
 const Database = require('./models/Database.js');
 
-console.log(Database);
+app.all("/*", function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    next();
+});
+
 app.get("/", (req, res) => {
     res.json({ message: "Hello from server!" });
 });
 
 app.get('/users',(req,res)=>{
-    res.send(Database.getAllUsers())
+    Database.Database.getAllUsers().then(users => {
+        console.log(users);
+        res.send(users);
+    });
+});
+
+app.get('/user',(req,res)=>{
+    Database.Database.getUserById(2).then(user => {
+        console.log(user);
+        res.send(user);
+    });
 });
 
 app.listen(PORT, () => {
