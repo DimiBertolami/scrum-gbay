@@ -1,5 +1,6 @@
 import './App.css';
 import React from "react";
+import Login from "./components/User/Login";
 
 function App() {
     const [data, setData] = React.useState(null);
@@ -15,6 +16,8 @@ function App() {
     <div className="app">
         <p>{!data ? "Loading..." : data[0].FirstName}</p>
       <h1>Hello world!</h1>
+
+        <Login />
     </div>
   );
 }
