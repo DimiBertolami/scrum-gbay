@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+<<<<<<< HEAD
 const envdata = require("dotenv");
 envdata.config({
   path: ".env",
@@ -14,6 +15,13 @@ class Database {
     // });
 
 
+=======
+require("dotenv").config();
+
+console.log(process.env.DB_DATABASE);
+class Database {
+  constructor() {
+>>>>>>> production
     this.con = mysql.createConnection({
       port: process.env.DB_PORT,
       host: process.env.DB_HOST,
