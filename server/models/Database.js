@@ -1,8 +1,6 @@
 const mysql = require("mysql");
-const envdata = require("dotenv");
-envdata.config({
-  path: ".././.env",
-});
+require('dotenv').config();
+
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
