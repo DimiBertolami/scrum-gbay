@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // import styles from "./Products.module.css";
 
 function Products() {
+  const i = 1;
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch("http://localhost:3001/products")
@@ -21,15 +22,15 @@ function Products() {
   return (
     <div>
       <p>Products</p>
-      {!data ? "Loading Title...." : <h4>{data[7].Title}</h4>}
+      {!data ? "Loading Title...." : <h4>{data[i].Title}</h4>}
       {!data ? (
         "Loading Image...."
       ) : (
-        <img src={imagePath(data[7].IMG_SRC)} alt={data[7].IMG_ALT} />
+        <img src={imagePath(data[i].IMG_SRC)} alt={data[i].IMG_ALT} />
       )}
-      {!data ? "Loading Description...." : <p>{data[7].Description}</p>}
-      {!data ? "Loading Price...." : <p>{data[7].Price}</p>}
-      {!data ? "Loading Category...." : <p>{data[7].Category}</p>}
+      {!data ? "Loading Description...." : <p>{data[i].Description}</p>}
+      {!data ? "Loading Price...." : <p>{data[i].Price}</p>}
+      {!data ? "Loading Category...." : <p>{data[i].Category}</p>}
     </div>
   );
 }
