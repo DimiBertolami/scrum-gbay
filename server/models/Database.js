@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const envdata = require("dotenv");
 envdata.config({
-  path: ".././.env",
+  path: ".env",
 });
 console.log(process.env.DB_DATABASE);
 class Database {
@@ -13,7 +13,9 @@ class Database {
     //   database: "gbay",
     // });
 
+
     this.con = mysql.createConnection({
+      port: process.env.DB_PORT,
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
