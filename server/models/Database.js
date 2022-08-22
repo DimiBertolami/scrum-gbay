@@ -1,51 +1,67 @@
-const mysql = require('mysql');
-const envdata = require('dotenv');
+const mysql = require("mysql");
+const envdata = require("dotenv");
 envdata.config({
-    path: ".././.env",
+  path: ".././.env",
 });
-// console.log(envdata);
-// console.log(process.env)
-console.log(process.env.DB_DATABASE)
-class Database{
-    constructor(){
-        this.con = mysql.createConnection({
-            host: process.env.DB_HOST,
-            user: process.env.DB_USER,
-            password: process.env.DB_PASSWORD,
-            database: process.env.DB_DATABASE
-        });
+console.log(process.env.DB_DATABASE);
+class Database {
+  constructor() {
+    // this.con = mysql.createConnection({
+    //   host: "localhost",
+    //   user: "root",
+    //   password: "",
+    //   database: "gbay",
+    // });
 
-        this.con.connect(function(err) {
-            if (err) throw err;
-            console.log("Connected!");
-        });
-    }
+    this.con = mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
+    });
 
-    async getAllUsers(){
-        return new Promise((resolve, reject) => {
-            this.con.query('SELECT * from users', (err, result) => {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    resolve(result);
-                }
-            });
-        });
-    }
+    this.con.connect(function (err) {
+      if (err) throw err;
+      console.log("Connected!");
+    });
+  }
 
-    async getUserById(id){
-        return new Promise((resolve, reject) => {
-            this.con.query('SELECT * from users WHERE id = '+id, (err, result) => {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    resolve(result);
-                }
-            });
-        });
-    }
+  async getAllUsers() {
+    return new Promise((resolve, reject) => {
+      this.con.query("SELECT * from users", (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+  async getUserById(id) {
+    return new Promise((resolve, reject) => {
+      this.con.query("SELECT * from users WHERE id = " + id, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+  // get all products
+  async getAllProducts() {
+    return new Promise((resolve, reject) => {
+      this.con.query("SELECT * from products", (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 }
 const db = new Database();
 exports.Database = db;
