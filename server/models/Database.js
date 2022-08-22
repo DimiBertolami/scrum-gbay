@@ -1,16 +1,9 @@
 const mysql = require("mysql");
-require('dotenv').config();
+require("dotenv").config();
 
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
-    // this.con = mysql.createConnection({
-    //   host: "localhost",
-    //   user: "root",
-    //   password: "",
-    //   database: "gbay",
-    // });
-
     this.con = mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
