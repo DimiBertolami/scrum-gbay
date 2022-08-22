@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "./Products.module.css";
+import { useEffect, useState } from "react";
+// import styles from "./Products.module.css";
 
 function Products() {
-  const [data, setData] = React.useState(null);
-  React.useEffect(() => {
+  const [data, setData] = useState(null);
+  useEffect(() => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())
       .then((data) => {
@@ -12,41 +13,34 @@ function Products() {
       });
   }, []);
 
-  const img_path = "/img/" ;
-  // console.log(img_path + data[1].IMG_SRC);
-  const img_path_full = (img_path + data[7].IMG_SRC);
-  console.log(img_path_full);
-  // console.log({data[1].IMG_SRC});
+  // making the src easier
+  function imagePath(imgPath) {
+    return "/img/" + imgPath;
+  }
 
   return (
     <div>
       <p>Products</p>
-      <h4>{!data ? "Loading..." : data[7].Title}</h4>
-      <img src={img_path_full} alt={data[7].IMG_ALT} />
-      <p>{!data ? "Loading..." : data[7].Description}</p>
-      <p>{!data ? "Loading..." : data[7].Price}</p>
-      <p>{!data ? "Loading..." : data[7].Category}</p>
+      {!data ? "Loading Title...." : <h4>{data[7].Title}</h4>}
+      {!data ? (
+        "Loading Image...."
+      ) : (
+        <img src={imagePath(data[7].IMG_SRC)} alt={data[7].IMG_ALT} />
+      )}
+      {!data ? "Loading Description...." : <p>{data[7].Description}</p>}
+      {!data ? "Loading Price...." : <p>{data[7].Price}</p>}
+      {!data ? "Loading Category...." : <p>{data[7].Category}</p>}
     </div>
-    // <div className="app">
-    //   <h1>Hello world!</h1>
-    // </div>
   );
 }
-export default Products;
-//////
-// );
 
-// const [data, setData] = React.useState(null);
-//   React.useEffect(() => {
-//     fetch("http://localhost:3001/products")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         setData(data);
-//       });
-//   }, []);
-// // return (
-//   <h1>Hello world!</h1>
-//   {/* <p>{!data ? "Loading..." : data}</p> */}
-// </div>
-// );
+// // This is just to make sure it's working when needed
+// //
+// function Products() {
+//   return (
+//     <div>tessst - client\src\components\Products\Products.js</div>
+//   )
+// }
+// //
+// // End of test
+export default Products;

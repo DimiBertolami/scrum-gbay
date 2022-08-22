@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-require("dotenv").config();
+require("dotenv").config(); // this is all that is 'required' lolzzzz
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
