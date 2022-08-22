@@ -1,8 +1,12 @@
 const mysql = require('mysql');
-const envdata = require('dotenv');
+//const envdata = require('dotenv');
 envdata.config({
     path: ".././.env",
 });
+
+//require('dotenv').config();
+
+
 // console.log(envdata);
 // console.log(process.env)
 console.log(process.env.DB_DATABASE)
@@ -34,6 +38,18 @@ class Database{
         });
     }
 
+    async getAllProducts() {
+        return new Promise((resolve, reject) => {
+            this.con.query("SELECT * from products", (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+    }
+
     async getUserById(id){
         return new Promise((resolve, reject) => {
             this.con.query('SELECT * from users WHERE id = '+id, (err, result) => {
@@ -47,5 +63,8 @@ class Database{
         });
     }
 }
+
+
+
 const db = new Database();
 exports.Database = db;
