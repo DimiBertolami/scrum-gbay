@@ -11,13 +11,21 @@ function Products() {
         setData(data);
       });
   }, []);
+
+  const img_path = "/img/" ;
+  // console.log(img_path + data[1].IMG_SRC);
+  const img_path_full = (img_path + data[7].IMG_SRC);
+  console.log(img_path_full);
+  // console.log({data[1].IMG_SRC});
+
   return (
     <div>
-      <p>Products Products Products Products Products Products</p>
-      <p>{!data ? "Loading..." : data[0].Title}</p>
-      <p>{!data ? "Loading..." : data[0].Description}</p>
-      <p>{!data ? "Loading..." : data[0].Price}</p>
-      <p>{!data ? "Loading..." : data[0].Category}</p>
+      <p>Products</p>
+      <h4>{!data ? "Loading..." : data[7].Title}</h4>
+      <img src={img_path_full} alt={data[7].IMG_ALT} />
+      <p>{!data ? "Loading..." : data[7].Description}</p>
+      <p>{!data ? "Loading..." : data[7].Price}</p>
+      <p>{!data ? "Loading..." : data[7].Category}</p>
     </div>
     // <div className="app">
     //   <h1>Hello world!</h1>
@@ -42,4 +50,3 @@ export default Products;
 //   {/* <p>{!data ? "Loading..." : data}</p> */}
 // </div>
 // );
-
