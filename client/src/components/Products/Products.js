@@ -34,7 +34,6 @@ function Products() {
     </div>
   );
 }
-
 // // This is just to make sure it's working when needed
 // //
 // function Products() {
@@ -44,4 +43,21 @@ function Products() {
 // }
 // //
 // // End of test
+
+// // //
+//
+// return (
+//   <div>
+//     <p>Products</p>
+//     {!data ? "Loading Title...." : <h4>{data[i].Title}</h4>}
+//     {!data ? (
+//       "Loading Image...."
+//     ) : (
+//       <img src={imagePath(data[i].IMG_SRC)} alt={data[i].IMG_ALT} />
+//     )}
+//     {!data ? "Loading Description...." : <p>{data[i].Description}</p>}
+//     {!data ? "Loading Price...." : <p>{data[i].Price}</p>}
+//     {!data ? "Loading Category...." : <p>{data[i].Category}</p>}
+//   </div>
+// );
 export default Products;
