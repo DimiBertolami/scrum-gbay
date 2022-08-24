@@ -1,6 +1,6 @@
 const express = require("express");
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -54,6 +54,14 @@ app.get("/product", (req, res) => {
 // triggers addProduct() from 'Database' model
 app.post("/product", (req, res) => {
   Database.Database.addProduct(1).then((products) => {
+    console.log(products);
+    res.send(products);
+  });
+});
+
+// handles the All Products query
+app.get("/products", (req, res) => {
+  Database.Database.getAllProducts().then((products) => {
     console.log(products);
     res.send(products);
   });

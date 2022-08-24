@@ -1,12 +1,8 @@
 const mysql = require("mysql");
-const envdata = require("dotenv");
-envdata.config({
-  path: ".././.env",
-});
+require("dotenv").config(); // this is all that is 'required' lolzzzz
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
-    require("dotenv").config();
     this.con = mysql.createConnection({
       port: process.env.DB_PORT,
       host: process.env.DB_HOST,
@@ -58,6 +54,13 @@ class Database {
         }
       });
     });
+
+    const mysql = require("mysql");
+    require("dotenv").config();
+
+    // console.log(envdata);
+    // console.log(process.env)
+    // console.log(process.env.DB_DATABASE)
   }
 
   // get product by id
@@ -88,5 +91,7 @@ class Database {
 }
 
 }
+
 const db = new Database();
+
 exports.Database = db;
