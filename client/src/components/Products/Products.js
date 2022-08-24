@@ -1,52 +1,42 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import styles from "./Products.module.css";
 
 function Products() {
-  const [data, setData] = React.useState(null);
-  React.useEffect(() => {
+  // const i = 1;
+  const [data, setData] = useState(null);
+  useEffect(() => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setData(data);
+        console.log(data);
       });
   }, []);
 
-  const img_path = "/img/" ;
-  // console.log(img_path + data[1].IMG_SRC);
-  const img_path_full = (img_path + data[7].IMG_SRC);
-  console.log(img_path_full);
-  // console.log({data[1].IMG_SRC});
+  // making the src easier
+  function imagePath(imgPath) {
+    return "/img/" + imgPath;
+  }
 
   return (
     <div>
-      <p>Products</p>
-      <h4>{!data ? "Loading..." : data[7].Title}</h4>
-      <img src={img_path_full} alt={data[7].IMG_ALT} />
-      <p>{!data ? "Loading..." : data[7].Description}</p>
-      <p>{!data ? "Loading..." : data[7].Price}</p>
-      <p>{!data ? "Loading..." : data[7].Category}</p>
+      {data ? (
+        data.map((product, key) => (
+          <div className={styles.productContainer} key={key}>
+            <h4>{product.Title}</h4>
+            {/* 👇 calls the 'imagePath' function with the IMG_SRC as a prop 👇 */}
+            <img src={imagePath(product.IMG_SRC)} alt={product.IMG_ALT} />
+            <p>{product.Description}</p>
+            <p>{product.Price}</p>
+            <p>{product.Category}</p>
+          </div>
+        ))
+      ) : (
+        <h1>loading</h1>
+      )}
     </div>
-    // <div className="app">
-    //   <h1>Hello world!</h1>
-    // </div>
   );
 }
-export default Products;
-//////
-// );
 
-// const [data, setData] = React.useState(null);
-//   React.useEffect(() => {
-//     fetch("http://localhost:3001/products")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         setData(data);
-//       });
-//   }, []);
-// // return (
-//   <h1>Hello world!</h1>
-//   {/* <p>{!data ? "Loading..." : data}</p> */}
-// </div>
-// );
+export default Products;
