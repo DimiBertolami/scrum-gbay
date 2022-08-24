@@ -29,6 +29,7 @@ app.get("/users", (req, res) => {
   });
 });
 
+// triggers getUserById() from 'Database' model
 app.get("/user", (req, res) => {
   Database.Database.getUserById(1).then((user) => {
     console.log(user);
@@ -38,6 +39,21 @@ app.get("/user", (req, res) => {
 // handles the All Products query
 app.get("/products", (req, res) => {
   Database.Database.getAllProducts().then((products) => {
+    console.log(products);
+    res.send(products);
+  });
+});
+// triggers getProduct() from 'Database' model
+app.get("/product", (req, res) => {
+  Database.Database.getProduct(1).then((products) => {
+    console.log(products);
+    res.send(products);
+  });
+});
+
+// triggers addProduct() from 'Database' model
+app.post("/product", (req, res) => {
+  Database.Database.addProduct(1).then((products) => {
     console.log(products);
     res.send(products);
   });
