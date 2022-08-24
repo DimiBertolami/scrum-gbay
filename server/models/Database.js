@@ -60,6 +60,7 @@ class Database {
     });
   }
 
+  // get product by id
   async getProduct(id){
     return new Promise ((resolve, reject) =>{
       this.con.query("SELECT * from prodcuts WHERE id =" + id, (err, result) => {
@@ -72,6 +73,7 @@ class Database {
     });
   }
 
+  // add product
   async addProduct(product){
     return new Promise((resolve, reject) => {
       this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, Category) 
