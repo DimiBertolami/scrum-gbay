@@ -43,6 +43,7 @@ app.get("/products", (req, res) => {
   });
 });
 
+// handles the All Products query
 app.get("/products", (req, res) => {
     Database.Database.getAllProducts().then((products) => {
         console.log(products);
@@ -51,5 +52,10 @@ app.get("/products", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+
+    console.log(`Server listening on ${PORT}`);
 });
+
+
+
+
