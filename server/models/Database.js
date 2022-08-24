@@ -1,5 +1,5 @@
 const mysql = require("mysql");
-require("dotenv").config(); // this is all that is 'required' lolzzzz
+require("dotenv").config();
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
@@ -54,13 +54,6 @@ class Database {
         }
       });
     });
-
-    const mysql = require("mysql");
-    require("dotenv").config();
-
-    // console.log(envdata);
-    // console.log(process.env)
-    // console.log(process.env.DB_DATABASE)
   }
 
   // get product by id
