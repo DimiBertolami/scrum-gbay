@@ -1,6 +1,6 @@
 const express = require("express");
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -45,17 +45,12 @@ app.get("/products", (req, res) => {
 
 // handles the All Products query
 app.get("/products", (req, res) => {
-    Database.Database.getAllProducts().then((products) => {
-        console.log(products);
-        res.send(products);
-    });
+  Database.Database.getAllProducts().then((products) => {
+    console.log(products);
+    res.send(products);
+  });
 });
 
 app.listen(PORT, () => {
-
-    console.log(`Server listening on ${PORT}`);
+  console.log(`Server listening on ${PORT}`);
 });
-
-
-
-
