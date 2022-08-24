@@ -2,6 +2,10 @@ import './App.css';
 import React from "react";
 import Login from "./components/User/Login";
 import Products from "./components/User/Products";
+import React, { useState} from "react";
+
+// import FormInput from "./components/FormInput";
+import Header from "./components/Header";
 
 function App() {
     const [data, setData] = React.useState(null);
@@ -13,13 +17,25 @@ function App() {
                 setData(data)
             });
     }, []);
+
+
     return (
+
     <div className="app">
         <p>{!data ? "Loading..." : data[0].FirstName}</p>
       <h1>Hello world!</h1>
         <Products />
         <Login />
     </div>
+        <div className="app">
+
+            {/*<p>{!data ? "Loading..." : data[0].Email}</p>*/}
+            {/*        <form >*/}
+            {/*<FormInput/>*/}
+            {/*        </form>*/}
+            <Header/>
+
+        </div>
   );
 }
 
