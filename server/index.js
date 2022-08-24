@@ -43,6 +43,19 @@ app.get("/products", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
+// handles the All Products query
+app.get("/products", (req, res) => {
+    Database.Database.getAllProducts().then((products) => {
+        console.log(products);
+        res.send(products);
+    });
 });
+
+app.listen(PORT, () => {
+
+    console.log(`Server listening on ${PORT}`);
+});
+
+
+
+
