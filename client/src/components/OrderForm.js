@@ -1,30 +1,37 @@
 import "./OrderForm.css";
-import {useState} from "react";
+import React, { useState } from 'react';
 
-function OrderForm(props) {
-    const [firstName, setFirstName] = useState('');
-    const [LastName, setLastName] = useState('');
-    console.log(firstName);
+const OrderForm = () => {
 
+    const [inputs, setInputs] = useState({
+        name: "",
+        email: "",
+        address: "",
+        phone: "",
+        password: ""
+    })
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert(`The name you enter was ${firstName}`);
+    const changeHandle = e => {
+        setInputs({
+            ...inputs,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const submitHandle = e => {
+        e.preventDefault()
+        console.log(inputs)
     }
 
     return (
-        <div className="form_input">
-            <h1 className="order_title">Order Form</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Enter your name:
-                    <input type="text"
-                           value={firstName}
-                           onChange={(event) => setFirstName(event.target.value)}/>
-                </label>
-                <button type="submit">Submit</button>
-            </form>
-
-        </div>
+        <form onSubmit={submitHandle}>
+            <input type="text" name="name" value={inputs.name} onChange={changeHandle} />
+            <input type="email" name="email" value={inputs.email} onChange={changeHandle} />
+            <input type="address" name="address" value={inputs.address} onChange={changeHandle} />
+            <input type="phone" name="phone" value={inputs.phone} onChange={changeHandle} />
+            <input type="password" name="password" value={inputs.password} onChange={changeHandle} />
+            <button type="submit">Submit</button>
+        </form>
     );
 }
 
