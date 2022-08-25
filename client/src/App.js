@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import OrderForm from "./components/OrderForm";
 import Header from "./components/Header";
-import Products from "./components/Products";
+// import Products from "./components/Products";
 // import Test from "./components/Test";
 
 
@@ -22,10 +22,8 @@ function App() {
         <div className="app">
             <Header/>
             {/*<p>{!data ? "Loading..." : data[0].Email}</p>*/}
-
             <OrderForm/>
             {/*<Test/>*/}
-
             {/*<Products/>*/}
         </div>
   );
