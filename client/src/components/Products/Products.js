@@ -1,18 +1,38 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import styles from "./Products.module.css";
 
 function Products() {
-  // const i = 1;
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        console.log(data);
       });
   }, []);
+
+  const [products, setProducts] = useState(null);
+
+  const [selectedCategory, setSelectedCategory] = useState();
+
+  useEffect(() => {
+    setProducts(data);
+  }, [data]);
+
+  // 👇 modified from: https://contactmentor.com/filter-list-by-category-react-js/
+  function getFiltered() {
+    if (!selectedCategory) {
+      return products;
+    }
+    return products.filter((item) => item.Category === selectedCategory);
+  }
+
+  var filteredProducts = useMemo(getFiltered, [selectedCategory, products]);
+
+  function handleCategoryChange(event) {
+    setSelectedCategory(event.target.value);
+  }
 
   // making the src easier
   function imagePath(imgPath) {
@@ -21,8 +41,21 @@ function Products() {
 
   return (
     <div>
-      {data ? (
-        data.map((product, key) => (
+      {/* 👇 'Category' dropdown 👇 */}
+      <div>
+        <select
+          name="category-list"
+          id="category-list"
+          onChange={handleCategoryChange}
+        >
+          <option value="">--Select Category--</option>
+          <option value="Marvel">Marvel</option>
+          <option value="DC">DC</option>
+          <option value="Nickelodeon">Nickelodeon</option>
+        </select>
+      </div>
+      {filteredProducts ? (
+        filteredProducts.map((product, key) => (
           <div className={styles.productContainer} key={key}>
             <h4>{product.Title}</h4>
             {/* 👇 calls the 'imagePath' function with the IMG_SRC as a prop 👇 */}
