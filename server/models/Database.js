@@ -41,6 +41,20 @@ class Database {
     });
   }
 
+  // add user
+  async addUser(user){
+    return new Promise((resolve, reject) => {
+      this.con.query(`INSERT INTO users (Username, FirstName, LastName, Password, Email, GSM, StreetName, HouseNumber_Plus_BOX, city, Postal_code, IsAdmin) 
+                      VALUES ('${user.Username}','${user.FirstName}','${user.LastName}','${user.Password}','${user.Email}','${user.GSM}','${user.StreetName}','${user.HouseNumber_Plus_BOX}','${user.city}','${user.Postal_code}','${user.IsAdmin}')`, (err, result)=> {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
   // PRODUCTS
 
   // get all products
@@ -59,7 +73,7 @@ class Database {
   // get product by id
   async getProduct(id){
     return new Promise ((resolve, reject) =>{
-      this.con.query("SELECT * from prodcuts WHERE id =" + id, (err, result) => {
+      this.con.query("SELECT * from products WHERE id =" + id, (err, result) => {
         if (err){
           reject(err);
         } else {
