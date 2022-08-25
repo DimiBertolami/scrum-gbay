@@ -1,5 +1,6 @@
 const mysql = require("mysql");
-require("dotenv").config(); // this is all that is 'required' lolzzzz
+require("dotenv").config();
+
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
@@ -57,6 +58,20 @@ class Database {
 
   // PRODUCTS
 
+  //Yascheroni
+  //async yGetAllProducts(){
+    // const ollemaoepnestokmesatekruie = 'SELECT * FROM products';
+  //  return new Promise((resolve,reject)=>{
+   //   this.con.query(ollemaoepnestokmesatekruie,(error,result)=>{
+  //    if(error){
+     //     reject(error)
+       // }else{
+         // resolve(result)
+      //  }
+    //  })
+   // })
+ // }
+
   // get all products
   async getAllProducts() {
     return new Promise((resolve, reject) => {
@@ -83,10 +98,10 @@ class Database {
     });
   }
 
-  // get product by category  NOG TESTEN
-  async getProductByCategory(id){
-    return new Promise ((resolve, reject) => {
-      this.con.query("SELECT * from products WHERE Category =" + Category, (err, result) => {
+  // get product by category
+  async getProductByCategory(category) {
+    return new Promise((resolve, reject) => {
+      this.con.query("SELECT * from products WHERE Category =" + category, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -94,7 +109,20 @@ class Database {
         }
       });
     });
+  }
 
+// delete product by id
+  async deleteProduct(id) {
+    return new Promise((resolve, reject) => {
+      this.con.query("DELETE FROM products WHERE id =" + id, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 
 
 
