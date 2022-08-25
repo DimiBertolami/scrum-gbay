@@ -1,6 +1,6 @@
 const express = require("express");
 
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -8,17 +8,17 @@ const Database = require("./models/Database.js");
 
 // routing; cors exception/work-around
 app.all("/*", function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization, Content-Length, X-Requested-With"
-    );
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Content-Length, X-Requested-With"
+  );
+  next();
 });
 
 app.get("/", (req, res) => {
-    res.json({message: "Hello from server!"});
+  res.json({ message: "Hello from server!" });
 });
 
 // triggers getAllUsers() from 'Database' model
@@ -83,19 +83,6 @@ app.get("/api/product/category/:category", async (req, res) => {
        res.status(500).send(error)
    }
 });
-
-
-
-
-
-// triggers addProduct() from 'Database' model
-// app.post("/product", (req, res) => {
-//     Database.Database.addProduct(1).then((products) => {
-//         console.log(products);
-//         res.send(products);
-//     });
-// });
-
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
