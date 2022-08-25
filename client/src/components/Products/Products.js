@@ -50,9 +50,11 @@ function Products() {
           <option value="Marvel">Marvel</option>
           <option value="DC">DC</option>
           <option value="Nickelodeon">Nickelodeon</option>
+          <option value="Studio Ghibli">Studio Ghibli</option>
+          <option value="Star Wars">Star Wars</option>
+          <option value="Disney">Disney</option>
         </select>
       </div>
-
       {filteredProducts ? (
         <Container>
           <Grid container spacing={3}>
