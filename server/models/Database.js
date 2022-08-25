@@ -83,7 +83,7 @@ class Database {
     });
   }
 
-  // get product by category
+  // get product by category  NOG TESTEN
   async getProductByCategory(id){
     return new Promise ((resolve, reject) => {
       this.con.query("SELECT * from products WHERE Category =" + Category, (err, result) => {
@@ -119,18 +119,18 @@ class Database {
 
 
 // Orders: THe New Order
-  async addOrder(product){
-    return new Promise((resolve, reject) => {
-      this.con.query(`INSERT INTO orders (id, userID, productID, Quantity) 
-                      VALUES ('${users.id}','${product.id}', 1)`, (err, result)=> {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(result);
-        }
-      });
-    });
-  }
+//   async addOrder(product){
+//     return new Promise((resolve, reject) => {
+//       this.con.query(`INSERT INTO orders (id, userID, productID, Quantity)
+//                       VALUES ('${users.id}','${product.id}', 1)`, (err, result)=> {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           resolve(result);
+//         }
+//       });
+//     });
+//   }
 
 
 
