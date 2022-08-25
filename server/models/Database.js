@@ -1,6 +1,5 @@
 const mysql = require("mysql");
-require("dotenv").config();
-
+require("dotenv").config(); // this is all that is 'required' lolzzzz
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
@@ -42,20 +41,21 @@ class Database {
     });
   }
 
+  // add user
+  async newUser(User){
+    return new Promise((resolve, reject) => {
+      this.con.query(`INSERT INTO users (Username, FirstName, LastName, Password, Email, GSM, StreetName, HouseNumber_Plus_BOX, city, Postal_code, IsAdmin) 
+                      VALUES ('${user.Username}','${user.FirstName}','${user.LastName}','${user.Password}','${user.Email}','${user.GSM}','${user.StreetName}','${user.HouseNumber_Plus_BOX}','${user.city}','${user.Postal_code}','${user.IsAdmin}')`, (err, result)=> {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
   // PRODUCTS
-  //Yascheroni
-  //async yGetAllProducts(){
-    // const ollemaoepnestokmesatekruie = 'SELECT * FROM products';
-  //  return new Promise((resolve,reject)=>{
-   //   this.con.query(ollemaoepnestokmesatekruie,(error,result)=>{
-  //    if(error){
-     //     reject(error)
-       // }else{
-         // resolve(result)
-      //  }
-    //  })
-   // })
- // }
 
   // get all products
   async getAllProducts() {
@@ -116,6 +116,23 @@ class Database {
 //       });
 //     });
 // }
+
+
+// Orders: THe New Order
+  async addOrder(product){
+    return new Promise((resolve, reject) => {
+      this.con.query(`INSERT INTO orders (id, userID, productID, Quantity) 
+                      VALUES ('${users.id}','${product.id}', 1)`, (err, result)=> {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+
 
 }
 
