@@ -1,5 +1,7 @@
 import React from 'react';
 import './Headre.css';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import Logo from '../logo_img/logo.png';
 
 
 function Header() {
@@ -7,11 +9,12 @@ function Header() {
         <div className="header">
             <nav>
                 <ul>
-                    <li className="logo"><a href="#">LOGO</a></li>
+                    <li className="logo"><img src={Logo} alt="logo"/></li>
                     <li className="links">
-                        <li><a href="/">Home</a></li>
+                        <li><a className="active" href="/">Home</a></li>
                         <li><a href="products">Products</a></li>
                         <li><a href="order">Order Form</a></li>
+                        <li><a href=""><ShoppingBasketIcon></ShoppingBasketIcon></a></li>
                     </li>
 
                 </ul>
