@@ -71,7 +71,7 @@ app.get("/api/product/id/:id", async (req, res) => {
    }
 });
 
-// triggers getProductByCategory() from 'Database' model  TO TEST
+// triggers getProductByCategory() from 'Database' model
 
 app.get("/api/product/category/:category", async (req, res) => {
    try{
