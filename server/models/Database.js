@@ -1,5 +1,6 @@
 const mysql = require("mysql");
-require("dotenv").config(); // this is all that is 'required' lolzzzz
+require("dotenv").config();
+
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
@@ -82,11 +83,10 @@ class Database {
     });
   }
 
-  // add product
-  async addProduct(product){
-    return new Promise((resolve, reject) => {
-      this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, Category) 
-                      VALUES ('${product.Title}','${product.Description}','${product.Price}','${product.Price_old}','${product.IMG_SRC}','${product.IMG_alt}','${product.Category}')`, (err, result)=> {
+  // get product by category
+  async getProductByCategory(id){
+    return new Promise ((resolve, reject) => {
+      this.con.query("SELECT * from products WHERE Category =" + Category, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -94,7 +94,28 @@ class Database {
         }
       });
     });
-}
+
+
+
+
+
+
+
+
+
+  // add product
+//   async addProduct(product){
+//     return new Promise((resolve, reject) => {
+//       this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, Category)
+//                       VALUES ('${product.Title}','${product.Description}','${product.Price}','${product.Price_old}','${product.IMG_SRC}','${product.IMG_alt}','${product.Category}')`, (err, result)=> {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           resolve(result);
+//         }
+//       });
+//     });
+// }
 
 }
 

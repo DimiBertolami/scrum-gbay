@@ -71,16 +71,30 @@ app.get("/api/product/id/:id", async (req, res) => {
    }
 });
 
+// triggers getProductByCategory() from 'Database' model
+
+app.get("/api/product/category/:category", async (req, res) => {
+   try{
+       const id = req.params.category;
+       const result = await Database.Database.getProductByCategory(id);
+       res.status(200).send(result)
+   }catch (error){
+       res.status(500).send(error)
+   }
+});
+
+
 
 
 
 // triggers addProduct() from 'Database' model
-app.post("/product", (req, res) => {
-    Database.Database.addProduct(1).then((products) => {
-        console.log(products);
-        res.send(products);
-    });
-});
+// app.post("/product", (req, res) => {
+//     Database.Database.addProduct(1).then((products) => {
+//         console.log(products);
+//         res.send(products);
+//     });
+// });
+
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
