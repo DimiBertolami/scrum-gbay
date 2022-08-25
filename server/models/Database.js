@@ -42,7 +42,7 @@ class Database {
   }
 
   // add user
-  async addUser(user){
+  async newUser(User){
     return new Promise((resolve, reject) => {
       this.con.query(`INSERT INTO users (Username, FirstName, LastName, Password, Email, GSM, StreetName, HouseNumber_Plus_BOX, city, Postal_code, IsAdmin) 
                       VALUES ('${user.Username}','${user.FirstName}','${user.LastName}','${user.Password}','${user.Email}','${user.GSM}','${user.StreetName}','${user.HouseNumber_Plus_BOX}','${user.city}','${user.Postal_code}','${user.IsAdmin}')`, (err, result)=> {
@@ -96,6 +96,23 @@ class Database {
       });
     });
 }
+
+
+// Orders: THe New Order
+  async addOrder(product){
+    return new Promise((resolve, reject) => {
+      this.con.query(`INSERT INTO orders (id, userID, productID, Quantity) 
+                      VALUES ('${users.id}','${product.id}', 1)`, (err, result)=> {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+
 
 }
 
