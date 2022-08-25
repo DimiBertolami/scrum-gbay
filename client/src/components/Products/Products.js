@@ -34,11 +34,6 @@ function Products() {
     setSelectedCategory(event.target.value);
   }
 
-  // making the src easier
-  function imagePath(imgPath) {
-    return "/img/" + imgPath;
-  }
-
   return (
     <div>
       {/* 👇 'Category' dropdown 👇 */}
@@ -58,8 +53,7 @@ function Products() {
         filteredProducts.map((product, key) => (
           <div className={styles.productContainer} key={key}>
             <h4>{product.Title}</h4>
-            {/* 👇 calls the 'imagePath' function with the IMG_SRC as a prop 👇 */}
-            <img src={imagePath(product.IMG_SRC)} alt={product.IMG_ALT} />
+            <img src={`/img/${product.IMG_SRC}`} alt={product.IMG_ALT} />
             <p>{product.Description}</p>
             <p>{product.Price}</p>
             <p>{product.Category}</p>
