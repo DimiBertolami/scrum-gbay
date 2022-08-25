@@ -1,7 +1,7 @@
 # scrum-gbay
 
-DB_HOST="localhost"
-DB_USER="scrum"
-DB_PASSWORD="scrum"
-DB_DATABASE="Scrum_project"
-DB_PORT="4306"
+
+DB_HOST="www.db4free.net"
+DB_USER="becode"
+DB_PASSWORD="weusenode"
+DB_DATABASE="becodegbay"
