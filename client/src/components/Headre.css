@@ -1,7 +1,14 @@
 .logo {
     display: flex;
     flex: 1;
+    width: 30px;
 }
+
+.logo img {
+    width: 50px;
+    margin-left: 30px;
+}
+
 ul {
     display: flex;
     align-items: center;
@@ -25,7 +32,6 @@ li a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
 }
