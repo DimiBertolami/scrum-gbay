@@ -1,6 +1,9 @@
 import React from "react";
 import { useEffect, useState, useMemo } from "react";
-import styles from "./Products.module.css";
+// import styles from "./Products.module.css";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import ProductCard from "./ProductCard";
 
 function Products() {
   const [data, setData] = useState(null);
@@ -49,16 +52,17 @@ function Products() {
           <option value="Nickelodeon">Nickelodeon</option>
         </select>
       </div>
+
       {filteredProducts ? (
-        filteredProducts.map((product, key) => (
-          <div className={styles.productContainer} key={key}>
-            <h4>{product.Title}</h4>
-            <img src={`/img/${product.IMG_SRC}`} alt={product.IMG_ALT} />
-            <p>{product.Description}</p>
-            <p>{product.Price}</p>
-            <p>{product.Category}</p>
-          </div>
-        ))
+        <Container>
+          <Grid container spacing={3}>
+            {filteredProducts.map((product, key) => (
+              <Grid item xs={12} md={6} lg={4} key={key}>
+                <ProductCard product={product} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       ) : (
         <h1>loading</h1>
       )}
