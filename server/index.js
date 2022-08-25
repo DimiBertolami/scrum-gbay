@@ -71,7 +71,7 @@ app.get("/api/product/id/:id", async (req, res) => {
    }
 });
 
-// triggers getProductByCategory() from 'Database' model
+// triggers getProductByCategory() from 'Database' model  TO TEST
 
 app.get("/api/product/category/:category", async (req, res) => {
    try{
@@ -83,6 +83,17 @@ app.get("/api/product/category/:category", async (req, res) => {
    }
 });
 
+// triggers deleteProduct() from 'Database' model  TO TEST
+
+app.delete("/api/product/id/:id", async (req, res) => {
+    try{
+        const id = req.params.id;
+        const result = await Database.Database.deleteProduct(id);
+        res.status(200).send(result)
+    }catch (error){
+        res.status(500).send(error)
+    }
+});
 
 
 

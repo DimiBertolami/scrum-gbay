@@ -43,6 +43,7 @@ class Database {
   }
 
   // PRODUCTS
+
   //Yascheroni
   //async yGetAllProducts(){
     // const ollemaoepnestokmesatekruie = 'SELECT * FROM products';
@@ -83,10 +84,10 @@ class Database {
     });
   }
 
-  // get product by category
-  async getProductByCategory(id){
-    return new Promise ((resolve, reject) => {
-      this.con.query("SELECT * from products WHERE Category =" + Category, (err, result) => {
+  // get product by category  TO TEST
+  async getProductByCategory(category) {
+    return new Promise((resolve, reject) => {
+      this.con.query("SELECT * from products WHERE Category =" + category, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -94,7 +95,20 @@ class Database {
         }
       });
     });
+  }
 
+// delete product by id  TO TEST
+  async deleteProduct(id) {
+    return new Promise((resolve, reject) => {
+      this.con.query("DELETE * from products WHERE id =" + id, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 
 
 
