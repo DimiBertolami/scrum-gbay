@@ -14,9 +14,6 @@ h1 {
     font-weight: 300;
 }
 
-.active {
-  border-bottom: 1px solid green;
-}
 
 h3 {
     width: 100%;
@@ -77,8 +74,8 @@ form {
 }
 
 button:hover {
-    color: #000;
-    background: darkgrey;
+    color: white;
+    background: darkgreen;
 }
 
 button {
@@ -92,6 +89,7 @@ button {
     cursor: pointer;
     border-radius: 3px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 input {

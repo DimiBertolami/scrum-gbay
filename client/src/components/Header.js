@@ -11,7 +11,7 @@ function Header() {
                 <ul>
                     <li className="logo"><img src={Logo} alt="logo"/></li>
                     <li className="links">
-                        <li><a className="active" href="/">Home</a></li>
+                        <li><a href="/">Login</a></li>
                         <li><a href="products">Products</a></li>
                         <li><a href="order">Order Form</a></li>
                         <li><a href=""><ShoppingBasketIcon></ShoppingBasketIcon></a></li>
