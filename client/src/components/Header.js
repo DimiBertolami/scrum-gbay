@@ -14,7 +14,7 @@ function Header() {
                         <li><a href="/">Login</a></li>
                         <li><a href="products">Products</a></li>
                         <li><a href="order">Order Form</a></li>
-                        <li><ShoppingBasketIcon></ShoppingBasketIcon></li>
+                        <a href=""><ShoppingBasketIcon className="basket"></ShoppingBasketIcon></a>
                     </div>
                 </ul>
             </nav>
