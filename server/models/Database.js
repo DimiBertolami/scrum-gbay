@@ -42,10 +42,13 @@ class Database {
   }
 
   // add user
-  async addUser(user){
+  async addUser(user) {
     return new Promise((resolve, reject) => {
-      this.con.query(`INSERT INTO users (Username, FirstName, LastName, Password, Email, GSM, StreetName, HouseNumber_Plus_BOX, city, Postal_code, IsAdmin) 
-                      VALUES ('${user.Username}','${user.FirstName}','${user.LastName}','${user.Password}','${user.Email}','${user.GSM}','${user.StreetName}','${user.HouseNumber_Plus_BOX}','${user.city}','${user.Postal_code}','${user.IsAdmin}')`, (err, result)=> {
+      this.con.query(`INSERT INTO users (Username, FirstName, LastName, Password, Email, GSM, StreetName,
+                                         HouseNumber_Plus_BOX, city, Postal_code, IsAdmin)
+                      VALUES ('${user.Username}', '${user.FirstName}', '${user.LastName}', '${user.Password}',
+                              '${user.Email}', '${user.GSM}', '${user.StreetName}', '${user.HouseNumber_Plus_BOX}',
+                              '${user.city}', '${user.Postal_code}', '${user.IsAdmin}')`, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -71,10 +74,10 @@ class Database {
   }
 
   // get product by id
-  async getProductById(id){
-    return new Promise ((resolve, reject) =>{
+  async getProductById(id) {
+    return new Promise((resolve, reject) => {
       this.con.query("SELECT * from products WHERE id =" + id, (err, result) => {
-        if (err){
+        if (err) {
           reject(err);
         } else {
           resolve(result);
@@ -85,10 +88,10 @@ class Database {
 
 
 // get product by category
-  async getProductByCategory(category){
-    return new Promise ((resolve, reject) =>{
+  async getProductByCategory(category) {
+    return new Promise((resolve, reject) => {
       this.con.query("SELECT * from products WHERE Category = '" + category + "'", (err, result) => {
-        if (err){
+        if (err) {
           reject(err);
         } else {
           resolve(result);
@@ -99,11 +102,12 @@ class Database {
 
 
   // add product
-  async addProduct(product){
+  async addProduct(product) {
     console.log(product)
     return new Promise((resolve, reject) => {
-      this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, Category) 
-                      VALUES ('${product.title}','${product.description}','${product.price}','${product.price_old}','${product.img_src}','${product.img_alt}','${product.category}')`, (err, result)=> {
+      this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, CategoryID)
+                      VALUES ('${product.title}', '${product.description}', '${product.price}', '${product.price_old}',
+                              '${product.img_src}', '${product.img_alt}', '${product.categoryID}')`, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -111,25 +115,42 @@ class Database {
         }
       });
     });
-}
-
-}
+  }
 
 
 // CATEGORIES
 
-// async getAllCategories() {
-//   return new Promise((resolve, reject) => {
-//     this.con.query("SELECT * from categories", (err, result) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         resolve(result);
-//       }
-//     });
-//   });
-// }
+  async getAllCategories() {
+    return new Promise((resolve, reject) => {
+      this.con.query("SELECT * from ", (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
 
+// ORDERS
+
+  async addOrder(order){
+    return new Promise((resolve, reject) => {
+      this.con.query(`INSERT INTO orders (userID, productID, Quantity)
+                      VALUES ('${product.userID}', '${product.productID}', '${product.Quantity}')`, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+
+
+
+}
 const db = new Database();
 
 exports.Database = db;

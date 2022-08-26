@@ -87,9 +87,26 @@ app.post("/api/product", async (req, res) => {
   }
 });
 
+// triggers getAllCategories from 'Database' Model
+app.get("api/categories", async (req, res) => {
+  try{
+    const result= await Database.Database.getAllCategories();
+    res.status(200).send(result)
+  } catch(error){
+    res.status(500).send(error)
+  }
+});
 
-
-
+// triggers addOrder() from 'Database' model
+app.post("/api/order", async (req, res) => {
+  try{
+    const order = req.params.order;
+    const result = await Database.Database.addOrder(order);
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
