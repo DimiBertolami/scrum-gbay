@@ -10,6 +10,7 @@ import Maestro from '../paymentCards/maestro.png';
 import Visa from '../paymentCards/visa.png';
 
 
+
 const OrderForm = () => {
 
 
@@ -43,7 +44,6 @@ const OrderForm = () => {
 
 
     return (
-
         <div className="container">
             <h1 className="form_title">Complete Your Order</h1>
             <div className="input_form">
