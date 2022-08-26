@@ -1,6 +1,10 @@
 const mysql = require('mysql');
 require("dotenv").config();
 
+//envdata.config({
+ //path: ".././.env",
+ //});
+
 // console.log(envdata);
 // console.log(process.env)
 // console.log(process.env.DB_DATABASE)
