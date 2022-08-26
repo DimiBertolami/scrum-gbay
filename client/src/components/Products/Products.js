@@ -1,37 +1,70 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import styles from "./Products.module.css";
+import { useEffect, useState, useMemo } from "react";
+// import styles from "./Products.module.css";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import ProductCard from "./ProductCard";
 
 function Products() {
-  // const i = 1;
   const [data, setData] = useState(null);
   useEffect(() => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        console.log(data);
       });
   }, []);
 
-  // making the src easier
-  function imagePath(imgPath) {
-    return "/img/" + imgPath;
+  const [products, setProducts] = useState(null);
+
+  const [selectedCategory, setSelectedCategory] = useState();
+
+  useEffect(() => {
+    setProducts(data);
+  }, [data]);
+
+  // 👇 modified from: https://contactmentor.com/filter-list-by-category-react-js/
+  function getFiltered() {
+    if (!selectedCategory) {
+      return products;
+    }
+    return products.filter((item) => item.Category === selectedCategory);
+  }
+
+  var filteredProducts = useMemo(getFiltered, [selectedCategory, products]);
+
+  function handleCategoryChange(event) {
+    setSelectedCategory(event.target.value);
   }
 
   return (
     <div>
-      {data ? (
-        data.map((product, key) => (
-          <div className={styles.productContainer} key={key}>
-            <h4>{product.Title}</h4>
-            {/* 👇 calls the 'imagePath' function with the IMG_SRC as a prop 👇 */}
-            <img src={imagePath(product.IMG_SRC)} alt={product.IMG_ALT} />
-            <p>{product.Description}</p>
-            <p>{product.Price}</p>
-            <p>{product.Category}</p>
-          </div>
-        ))
+      {/* 👇 'Category' dropdown 👇 */}
+      <div>
+        <select
+          name="category-list"
+          id="category-list"
+          onChange={handleCategoryChange}
+        >
+          <option value="">--Select Category--</option>
+          <option value="Marvel">Marvel</option>
+          <option value="DC">DC</option>
+          <option value="Nickelodeon">Nickelodeon</option>
+          <option value="Studio Ghibli">Studio Ghibli</option>
+          <option value="Star Wars">Star Wars</option>
+          <option value="Disney">Disney</option>
+        </select>
+      </div>
+      {filteredProducts ? (
+        <Container>
+          <Grid container spacing={3}>
+            {filteredProducts.map((product, key) => (
+              <Grid item xs={12} md={6} lg={4} key={key}>
+                <ProductCard product={product} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       ) : (
         <h1>loading</h1>
       )}

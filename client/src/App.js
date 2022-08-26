@@ -1,31 +1,12 @@
-import './App.css';
-import React from "react";
-import Login from "./components/User/Login";
-import Products from "./components/User/Products";
-import React, { useState} from "react";
-
-// import FormInput from "./components/FormInput";
-import Header from "./components/Header";
-
 import "./App.css";
 import React from "react";
-import Products from "./components/Products/Products";
-// import Header from "./components/Header";
-
-function App() {
-  return (
-    <div className="app">
-      <p>app component working</p>
-      {/* <Header /> */}
-      <Products />
-    </div>
-
-import './App.css';
-import React from 'react';
-import FormInput from "./components/FormInput";
 import Header from "./components/Header";
-import Products from "./components/Products";
-import Test from "./components/Test";
+// import Products from "./components/Products/Products";
+//import Login from "./components/Login";
+import OrderForm from "./components/OrderForm";
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import RegistrationForm from "./components/User/RegistrationForm";
+
 
 function App() {
     const [data, setData] = React.useState(null);
@@ -40,23 +21,24 @@ function App() {
 
 
     return (
-
-    <div className="app">
-        <p>{!data ? "Loading..." : data[0].FirstName}</p>
-      <h1>Hello world!</h1>
-        <Products />
-        <Login />
-    </div>
         <div className="app">
-            <Header/>
-            <p>{!data ? "Loading..." : data[0].Email}</p>
-            {/*        <form >*/}
-            {/*<FormInput/>*/}
-            {/*        </form>*/}
-            <Products/>
-                <Test/>
-        </div>
-  );
-}
+            <Router>
+                <Header>
+                    <Link to='/'>Login</Link>
+                    <Link to='/order'>Order</Link>
+                    <Link to='/products'>Products</Link>
+                </Header>
+                <Routes>
+                    <Route path='/' element={<RegistrationForm/>}/>
+                    <Route path='/order' element={<OrderForm/>}/>
+                    {/*<Route path='/products' element={<Products/>}/>*/}
+                    {/*Error page have to be last in Rote*/}
+                    {/*<Route path='*' element={<Error/>}/>*/}
+                </Routes>
+            </Router>
+            {/*<p>{!data ? "Loading..." : data[0].Email}</p>*/}
+            </div>
+            );
+        }
 
 export default App;
