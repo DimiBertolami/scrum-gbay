@@ -6,20 +6,10 @@ import Products from "./components/Products/Products";
 import Login from "./components/Login";
 // import Test from "./components/Test";
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import Error from "./components/Error";
+
 
 
 function App() {
-    const [data, setData] = React.useState(null);
-    React.useEffect(() => {
-        fetch("http://localhost:3001/users")
-            .then((res) => res.json())
-            .then((data) => {
-                // console.log(data);
-                setData(data)
-            });
-    }, []);
-
 
     return (
         <div className="app">

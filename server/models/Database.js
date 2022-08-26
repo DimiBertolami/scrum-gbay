@@ -84,8 +84,8 @@ class Database {
   }
 
   // get product by category  NOG TESTEN
-  async getProductByCategory(id){
-    return new Promise ((resolve, reject) => {
+  async getProductByCategory(id) {
+    return new Promise((resolve, reject) => {
       this.con.query("SELECT * from products WHERE Category =" + Category, (err, result) => {
         if (err) {
           reject(err);
@@ -94,16 +94,9 @@ class Database {
         }
       });
     });
+  }
 
-
-
-
-
-
-
-
-
-  // add product
+    // add product
 //   async addProduct(product){
 //     return new Promise((resolve, reject) => {
 //       this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, Category)
@@ -128,10 +121,9 @@ class Database {
 //         } else {
 //           resolve(result);
 //         }
-//       });
-//     });
-//   }
+  //  );
 
+  // }
 
 
 }
