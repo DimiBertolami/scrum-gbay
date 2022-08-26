@@ -3,6 +3,7 @@ require("dotenv").config();
 console.log(process.env.DB_DATABASE);
 class Database {
   constructor() {
+    require("dotenv").config();
     this.con = mysql.createConnection({
       port: process.env.DB_PORT,
       host: process.env.DB_HOST,
@@ -88,9 +89,9 @@ class Database {
 
 
 // get product by category
-  async getProductByCategory(category) {
+  async getProductByCategory(categoryID) {
     return new Promise((resolve, reject) => {
-      this.con.query("SELECT * from products WHERE Category = '" + category + "'", (err, result) => {
+      this.con.query("SELECT * from products WHERE CategoryID = '" + categoryID + "'", (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -122,7 +123,7 @@ class Database {
 
   async getAllCategories() {
     return new Promise((resolve, reject) => {
-      this.con.query("SELECT * from ", (err, result) => {
+      this.con.query("SELECT * from categories ", (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -137,7 +138,7 @@ class Database {
   async addOrder(order){
     return new Promise((resolve, reject) => {
       this.con.query(`INSERT INTO orders (userID, productID, Quantity)
-                      VALUES ('${product.userID}', '${product.productID}', '${product.Quantity}')`, (err, result) => {
+                      VALUES ('${order.userID}', '${order.productID}', '${order.Quantity}')`, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -146,10 +147,6 @@ class Database {
       });
     });
   }
-
-
-
-
 }
 const db = new Database();
 

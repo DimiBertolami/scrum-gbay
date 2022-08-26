@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-const Database = require("./models/Database.js");
+const Database = require("./models/Database");
 
 // routing; cors exception/work-around
 app.all("/*", function (req, res, next) {
