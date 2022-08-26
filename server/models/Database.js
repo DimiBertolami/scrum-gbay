@@ -71,7 +71,7 @@ class Database {
   }
 
   // get product by id
-  async getProduct(id){
+  async getProductById(id){
     return new Promise ((resolve, reject) =>{
       this.con.query("SELECT * from products WHERE id =" + id, (err, result) => {
         if (err){
@@ -83,11 +83,27 @@ class Database {
     });
   }
 
+
+// get product by category
+  async getProductByCategory(category){
+    return new Promise ((resolve, reject) =>{
+      this.con.query("SELECT * from products WHERE Category = '" + category + "'", (err, result) => {
+        if (err){
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  }
+
+
   // add product
   async addProduct(product){
+    console.log(product)
     return new Promise((resolve, reject) => {
       this.con.query(`INSERT INTO products (Title, Description, Price, Price_old, IMG_SRC, IMG_alt, Category) 
-                      VALUES ('${product.Title}','${product.Description}','${product.Price}','${product.Price_old}','${product.IMG_SRC}','${product.IMG_alt}','${product.Category}')`, (err, result)=> {
+                      VALUES ('${product.title}','${product.description}','${product.price}','${product.price_old}','${product.img_src}','${product.img_alt}','${product.category}')`, (err, result)=> {
         if (err) {
           reject(err);
         } else {
@@ -98,6 +114,21 @@ class Database {
 }
 
 }
+
+
+// CATEGORIES
+
+// async getAllCategories() {
+//   return new Promise((resolve, reject) => {
+//     this.con.query("SELECT * from categories", (err, result) => {
+//       if (err) {
+//         reject(err);
+//       } else {
+//         resolve(result);
+//       }
+//     });
+//   });
+// }
 
 const db = new Database();
 
