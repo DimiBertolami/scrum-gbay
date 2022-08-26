@@ -8,7 +8,6 @@ import Aexpress from '../paymentCards/americanexpress.png';
 import Cirrus from '../paymentCards/cirrus.png';
 import Maestro from '../paymentCards/maestro.png';
 import Visa from '../paymentCards/visa.png';
-import { BrowserRouter as Router} from "react-router-dom";
 // import {useHistory} from "react-router-dom";
 
 const OrderForm = () => {
@@ -48,7 +47,6 @@ const OrderForm = () => {
 
 
     return (
-
         <div className="container">
             <h1 className="form_title">Complete Your Order</h1>
             <div className="input_form">
