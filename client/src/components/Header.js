@@ -10,17 +10,14 @@ function Header() {
             <nav>
                 <ul>
                     <li className="logo"><img src={Logo} alt="logo"/></li>
-                    <li className="links">
+                    <div className="links">
                         <li><a href="/">Login</a></li>
                         <li><a href="products">Products</a></li>
                         <li><a href="order">Order Form</a></li>
-                        <li><a href=""><ShoppingBasketIcon></ShoppingBasketIcon></a></li>
-                    </li>
-
+                        <a href=""><ShoppingBasketIcon className="basket"></ShoppingBasketIcon></a>
+                    </div>
                 </ul>
             </nav>
-
-
         </div>
     );
 }

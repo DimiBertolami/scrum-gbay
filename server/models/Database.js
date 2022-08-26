@@ -1,5 +1,11 @@
-const mysql = require('mysql');
-require("dotenv").config();
+const mysql = require("mysql");
+require("dotenv").config(); // this is all that is 'required' lolzzzz
+console.log(process.env.DB_DATABASE);
+
+
+//envdata.config({
+ //path: ".././.env",
+ //});
 
 // console.log(envdata);
 // console.log(process.env)

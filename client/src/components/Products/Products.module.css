@@ -1,0 +1,18 @@
+/* .Products {} */
+
+.productContainer {
+    width: 25vw;
+    margin: 2vw;
+    padding: 20px;
+    background-color: rgb(51, 126, 175);
+    border-radius: 10px;
+    display: flex;
+    justify-self: center;
+
+}
+
+img {
+    max-width:100%;
+    max-height:100%;
+    object-fit: fill;
+}

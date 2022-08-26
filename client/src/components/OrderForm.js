@@ -8,7 +8,8 @@ import Aexpress from '../paymentCards/americanexpress.png';
 import Cirrus from '../paymentCards/cirrus.png';
 import Maestro from '../paymentCards/maestro.png';
 import Visa from '../paymentCards/visa.png';
-// import {useHistory} from "react-router-dom";
+
+
 
 const OrderForm = () => {
 
@@ -39,10 +40,6 @@ const OrderForm = () => {
         console.log(inputs)
     }
 
-    // let history = useHistory();
-    // const handleHistory = () => {
-    //   history.push('/welcome');
-    // }
 
 
 
@@ -149,7 +146,7 @@ const OrderForm = () => {
                         </div>
                     </div>
                     <div className="order_submitBtn">
-                        <button  type="submit">Continue to checkout</button>
+                        <button type="submit">Continue to checkout</button>
                     </div>
                 </form>
             </div>
