@@ -1,6 +1,8 @@
 import React, {useState,setState} from 'react';
 import './RegistrationForm.css'
+import bg from '../../bg/spiderman.jpeg'
 function RegistrationForm() {
+
 
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null);
@@ -59,9 +61,20 @@ function RegistrationForm() {
             <div class="footer">
                 <button onClick={()=>handleSubmit()} type="submit" class="btn">Register</button>
             </div>
+
+            <div>
+                <img className="spidey" src={bg}/>
+            </div>
+
+
         </div>
 
+
+
     )
+
+
+
 }
 
 export default RegistrationForm
