@@ -1,13 +1,14 @@
+import "./App.css";
 import React from "react";
 import Header from "./components/Header";
 // import Products from "./components/Products/Products";
-import Login from "./components/Login";
+//import Login from "./components/Login";
 import OrderForm from "./components/OrderForm";
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import RegistrationForm from "./components/User/RegistrationForm";
 
 
 function App() {
-
     return (
         <div className="app">
             <Router>
@@ -17,7 +18,7 @@ function App() {
                     <Link to='/products'>Products</Link>
                 </Header>
                 <Routes>
-                    <Route path='/' element={<Login/>}/>
+                    <Route path='/' element={<RegistrationForm/>}/>
                     <Route path='/order' element={<OrderForm/>}/>
                     {/*<Route path='/products' element={<Products/>}/>*/}
                     {/*Error page have to be last in Rote*/}
@@ -29,4 +30,4 @@ function App() {
             );
         }
 
-            export default App;
+export default App;
