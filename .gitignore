@@ -5,7 +5,6 @@
 .env
 node_modules
 package-lock.json
-package.json
 ### macOS ###
 # General
 .DS_Store
@@ -317,3 +316,8 @@ fabric.properties
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,dotenv,phpstorm
+
+node_modules
+.env
+
+
