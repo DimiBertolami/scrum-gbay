@@ -22,49 +22,90 @@ app.get("/", (req, res) => {
 });
 
 // triggers getAllUsers() from 'Database' model
-app.get("/users", (req, res) => {
-  Database.Database.getAllUsers().then((users) => {
-    console.log(users);
-    res.send(users);
-  });
+app.get("/api/users", async (req, res) => {
+  try{
+    const result = await Database.Database.getAllUsers()
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
 });
 
 // triggers getUserById() from 'Database' model
-app.get("/user", (req, res) => {
-  Database.Database.getUserById(1).then((user) => {
-    console.log(user);
-    res.send(user);
-  });
+app.get("/api/user/id/:id", async (req, res) => {
+  try{
+    const id = req.params.id;
+    const result = await Database.Database.getUserById(id)
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
 });
-// handles the All Products query
-app.get("/products", (req, res) => {
-  Database.Database.getAllProducts().then((products) => {
-    console.log(products);
-    res.send(products);
-  });
+
+// handles  getAllProducts query
+app.get("/api/products", async (req, res) => {
+  try{
+    const result = await Database.Database.getAllProducts();
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
 });
-// triggers getProduct() from 'Database' model
-app.get("/product", (req, res) => {
-  Database.Database.getProduct(1).then((products) => {
-    console.log(products);
-    res.send(products);
-  });
+
+// triggers getProductById() from 'Database' model
+app.get("/api/product/id/:id", async (req, res) => {
+  try{
+    const id = req.params.id;
+    const result = await Database.Database.getProductById(id);
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
 });
+
+// triggers getProductByCategory() from 'Database' model
+app.get("/api/product/category/:category", async (req, res) => {
+  try{
+    const category = req.params.category;
+    const result = await Database.Database.getProductByCategory(category);
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
+});
+
+
 
 // triggers addProduct() from 'Database' model
-app.post("/product", (req, res) => {
-  Database.Database.addProduct(1).then((products) => {
-    console.log(products);
-    res.send(products);
-  });
+app.post("/api/product", async (req, res) => {
+  try{
+    const product = req.params.product;
+    const result = await Database.Database.addProduct(product);
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
 });
 
-// handles the All Products query
-app.get("/products", (req, res) => {
-  Database.Database.getAllProducts().then((products) => {
-    console.log(products);
-    res.send(products);
-  });
+// triggers getAllCategories from 'Database' Model
+app.get("api/categories", async (req, res) => {
+  try{
+    const result= await Database.Database.getAllCategories();
+    res.status(200).send(result)
+  } catch(error){
+    res.status(500).send(error)
+  }
+});
+
+// triggers addOrder() from 'Database' model
+app.post("/api/order", async (req, res) => {
+  try{
+    const order = req.params.order;
+    const result = await Database.Database.addOrder(order);
+    res.status(200).send(result)
+  }catch (error){
+    res.status(500).send(error)
+  }
 });
 
 app.listen(PORT, () => {
