@@ -17,9 +17,9 @@ app.all("/*", function (req, res, next) {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
+//app.get("/", (req, res) => {
+ // res.json({ message: "Hello from server!" });
+//});
 
 // triggers getAllUsers() from 'Database' model
 app.get("/api/users", async (req, res) => {
