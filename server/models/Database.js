@@ -9,7 +9,7 @@ require("dotenv").config();
           user: process.env.DB_USER,
           password: process.env.DB_PASSWORD,
           database: process.env.DB_DATABASE,
-        });
+        });}
 
   async getUserById(id) {
     return new Promise((resolve, reject) => {
