@@ -33,21 +33,14 @@ Categories such as Marvel, DC, Anime, Nickelodeon
 - as a client i want G-bay logo to establish brand identity
 
 ## Post-Mortem
+after reviewing the past two weeks there's indeed some  things that could be improved.
+merging conflicts went wrong a few times, also pushing every single insignificant file inside the
+repository (node packages, .env file and package.jsons were here and
+there manually modified which led to giant issues in the shared repository)
+overwriting each others changes happened more than I care to admit.(path added to .env.config, removed again, added again, removed again,...
+Something positive to mention about working in this team, is even though we got frustrated by the lack of progress
+or by the type of "echternacht procession" where we take two steps forward and one step bacwards..
+even though this happened alot, we managed to keep the atmosphere light in the group and remained
+respectful for the opinions of our team members, which is in my opinion a crucial skill required for this type of job.
 
-- There were many difficulties that we encountered.
-- Things that I found easy were difficult to other team members & difficult to communicate, & vice-versa.
-- I'm atrocious at working with other people.
-- Giving out tasks that I believed would take 1 hour generally took a lot longer.
-- I can't do any learning when there is 8 hours every day of chatter.
-- Getting everybody working with github correctly was impossible, we all lacked the fundamental skills for that & didn't really improve even towards the end.
-- There was mass confusion about the .env file & .gitignore from the team.
-- The initial planning on Jira was nowhere near a real-world case.
-- Node.JS & Express are things I really need to look at in greater depth.
-- Dependencies were messed up many times from lack of understanding.
-- A lot of time was wasted looking at the same issues for each team member to get them up to speed - some of that was subsequently ignored which really pissed me off at times.
-- I hate working with others.
-- The hot weather didn't make things better.
-Dependencies were messed up many times from lack of understanding.
-A lot of time was wasted looking at the same issues for each team member to get them up to speed - some of that was subsequently ignored which really pissed me off at times.
-I hate working with others.
-The hot weather didn't make things better.
+
